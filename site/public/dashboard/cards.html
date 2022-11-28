@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2 (2).png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimente | Dados</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="dashboards.css">
+
+    <script src="../js/funcoes.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload=" atualizacaoPeriodica()" >
+    <!-- validarSessao() -->
+    <div class="janela">
+
+        <div class="header-left dash-header">
+
+            <h1>Alimente</h1>
+
+            <div class="hello">
+                <h3>Oi, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Sorteio de preparações</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./graficos.html">
+                    <h3>Veja os mais sorteados</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
+
+        <div class="dash">
+
+            <div class="regua">
+
+                <div class="item-regua">
+                    <button class="button-82-pushable" role="button" onclick="sort()">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">
+                            Sorteie uma preparação para experimentar!
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="campo">
+                <div id="men"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+            b_usuario.innerHTML = sessionStorage.NOME_USUARIO; 
+
+    var receitas = [
+        'Bolo de cenoura',
+        'Brigadeiro',
+        'Bruschettas',
+        'Cookies',
+        'Geléia de jabuticaba',
+        'Massa Fresca',
+        'Mojito',
+        'Petit Gateau',
+        'Pipoca doce',
+        'Pudim',
+        'Studel de maçã',
+        'Yakisoba']
+    var tipo = [
+        'Doces',
+        'Salgados',
+        'Bedidas']
+
+    var imagens = [
+        '<img src="receitas/bolo de cenoura2.jpg" width="200px">',
+        '<img src="receitas/bri3.jpg" width="200px">',
+        '<img src="receitas/bruschetta.jpg" width="200px">',
+        '<img src="receitas/cookie2.jpg" width="200px">',
+        '<img src="receitas/Geleia-de-Jabuticaba.jpeg" width="200px">',
+        '<img src="receitas/massa fresca.jpg" width="200px">',
+        '<img src="receitas/MOJ1.jpg" width="200px">',
+        '<img src="receitas/petit-gateau.jpg" width="200px">',
+        '<img src="receitas/pipoca.jpg" width="200px">',
+        '<img src="receitas/pudim.jpg" width="200px">',
+        '<img src="receitas/Strudel-.jpg" width="200px">',
+        '<img src="receitas/y1.jpg" width="200px">',
+    ]
+    function sort() {
+        var nome = sessionStorage.ID_USUARIO;
+        var rere = Number(Math.random() * 12).toFixed(0)
+        var Dadosorteado = 0
+
+        for (let index = 0; index < receitas.length; index++) {
+
+            if (rere == 0 || rere == 1 || rere == 3 || rere == 4 || rere == 7 || rere == 8 || rere == 9 || rere == 10) {
+                men.innerHTML = `${imagens[rere]}<br>${receitas[rere]} <br><br>Categoria: ${tipo[0]}<br>`
+                Dadosorteado = Number(rere) + Number(1)
+            }
+            if (rere == 2 || rere == 5 || rere == 11) {
+                men.innerHTML = `${imagens[rere]}<br>${receitas[rere]} <br><br>Categoria: ${tipo[1]}<br>`
+                Dadosorteado = Number(rere) + Number(1)
+            }
+            if (rere == 6) {
+                men.innerHTML = `${imagens[rere]}<br>${receitas[rere]} <br><br>Categoria: ${tipo[2]}<br>`
+                Dadosorteado = Number(rere) + Number(1)
+            }
+        }
+
+        var sorteadoVar = Dadosorteado;
+        var nomeVar = nome;
+        // /rata nome do js e a router que ele ta fzd
+        fetch("/rata/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/rata.js
+                sorteioServer: sorteadoVar,
+                nomeServer: nomeVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+        });
+
+    }
+
+</script>
+
+</html>

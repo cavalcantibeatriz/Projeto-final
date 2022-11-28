@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    border: 0;
+    font-family: Cambria, serif;
+}
+
+body {
+    display: block;
+    width: auto;
+    height: 150vh;
+    background-image: url(fts/asdfghjk.png);
+    background-size: 100%;
+    
+
+}
+
+.header {
+    /* position: fixed; */
+    background-color: black;
+    display: flex;
+    /* border: solid 1px purple; */
+    width: auto;
+    height: 70px;
+    z-index: 1000;
+    grid-area: header;
+}
+
+.header #navbar {
+    /* border: solid 3px red; */
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#navbar li {
+    margin-right: 2%;
+    font-size: 17px;
+}
+
+li a {
+    /* text-decoration:none tira o sublinhado de link */
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: 0.3s;
+    margin: 0 30px;
+}
+
+li a:hover {
+    color: purple;
+    transition: 0.5s;
+}
+
+.header #logo{
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 40px;
+    justify-content: left;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 15px;
+}
+.header img{
+width: 150px;
+justify-content: left;
+
+}
+.tela {
+    /* border: red 3px solid; */
+    width: auto;
+    height:100%;
+    display: flex;
+}
+
+.tela #titulo {
+    /* border: rgb(17, 255, 0) 3px solid; */
+    margin-top: 15px;
+    font-size: 70px;
+    text-align: center;
+    color: #f35959;
+    text-shadow: #000000 3px 3px 3px;
+
+}
+
+.corpo {
+    /* border: 3px solid rgb(208, 187, 208); */
+    height: auto;
+    width: auto;
+    margin-top: 0px;
+    display: flex;
+
+
+}
+
+.corpo #receita {
+    /* border: rgb(0, 0, 0) 3px solid; */
+    width: 40%;
+    height: auto;
+    background: linear-gradient(to left, #ffffff, #949696);
+    /* background: linear-gradient( to left, #f35959, #96459e); */
+    border-right: #000000 5px solid;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+
+}
+
+#receita li {
+    font-size: 18px;
+    margin-right: 15px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 5px;
+}
+
+#receita h1 {
+    margin-left: 15px;
+    color: rgb(7, 105, 33);
+    text-shadow: #fffafa 2px 2px 4px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.corpo #historia {
+ 
+    /* border: rgb(255, 242, 0) 3px solid; */
+    width: 100%;
+}
+#historia #grafico{
+    /* border: rgb(187, 0, 255) 3px solid; */
+    height: 20%;
+    background-color: rgb(62, 45, 45);
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
+    -webkit-box-shadow: 9px 7px 5px rgba(0, 0, 0, 0.77);
+    -moz-box-shadow:    9px 7px 5px rgba(0, 0, 0, 0.77);
+    box-shadow:         9px 7px 5px rgba(0, 0, 0, 0.77);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#grafico h1{
+    text-align: center;
+}
+#historia #imagem{
+display: flex;
+/* border: #96459e solid 3px; */
+justify-content: center;
+align-items: center;
+height: 200px;
+
+}
+#historia img{
+    /* border: #bba6bd solid 3px; */
+    height: 120px;
+    border: #221c1c00 3px solid;
+border-radius: 50%;
+
+}
+#historia #txt{
+    /* border: blue 3px solid; */
+    height:20%;
+    background-color: rgb(53, 92, 127);
+    margin-top: 35px;
+    margin-left: 10%;
+    margin-right: 10%;
+   
+    border-radius: 10px;
+    -webkit-box-shadow: 9px 7px 5px rgba(0, 0, 0, 0.77);
+    -moz-box-shadow:    9px 7px 5px rgba(0, 0, 0, 0.77);
+    box-shadow:         9px 7px 5px rgba(0, 0, 0, 0.77);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#txt #texto{
+    font-size: 20px;
+    /* border: rgb(0, 81, 255) 3px solid; */
+    text-align: justify;
+    margin-left: 15px;
+    margin-right: 15px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+#grafico h1{
+    /* border: red 3px solid; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    font-style: italic;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(255, 204, 0) 5px 4px 30px;
+    
+}

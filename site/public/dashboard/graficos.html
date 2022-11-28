@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimente | Gráficos</title>
+    <link rel="shortcut icon" href="../assets/icon/favicon2 (2).png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="dashboards.css">
+    <script src="../js/funcoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="janela">
+        <div class="header-left">
+            <h1>Alimente</h1>
+            <div class="hello">
+                <h3>Oi, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+            <div class="btn-nav-white">
+                <a href="./cards.html">
+                    <h3>Sorteio de preparações</h3>
+                </a>
+            </div>
+            <div class="btn-nav">
+                <h3>Veja os mais sorteados</h3>
+            </div>
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+        </div>
+
+        <div class="dash p1">
+            <div class="graf">
+                <div id="grafico1" class="display-block">
+                    <center><br>
+                        <span id="tituloAquario1">preparações mais sorteadas</span>
+                    </center>
+                    <div>
+                        <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function gragra(pegar) {
+
+        const labels1 = [
+            // eixo x --> parte de baixo da orientação, essa constante nunca vai se alterar
+            'Bolo de cenoura',
+            'Brigadeiro',
+            'Bruschetta',
+            'Cookies',
+            'Geléia de jabuticaba',
+            'Massa fresca',
+            'Mojito',
+            'Petit gateau',
+            'Pipoca doce',
+            'Pudim',
+            'Strudel de maçã',
+            'Yakisoba'
+        ];
+
+        // data de dados
+        const data1 = {
+            labels: labels1,
+            datasets: [{
+                label: 'Sorteios',
+                // cor da bolinha
+                backgroundColor: '#269057',
+                // dados
+                data:
+                    [],
+            }
+            ]
+        };
+        // ordem feita para enviar dados
+        data1.datasets[0].data = pegar;
+        // -------------------------------------
+        const config2 = {
+            type: 'bar',
+            data: data1,
+            options: {}
+        };
+        const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
+        );
+    }
+
+    fetch(`/rato/trazer`).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (dadosdados) {
+
+                console.log(`Dados recebidos: ${JSON.stringify(dadosdados)}`);
+
+                // vetor 
+                // comecando em 0, cd posicao, todos 
+                var qtdvotos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+                //varrendo as respostas do banco 
+                for (let index = 0; index < dadosdados.length; index++) {
+                    // atribui - 1 no index pq comeca em 0 
+                    // para alterar a posição da receita certa, um comeca em 0 e uma começa em 1 onde o que vem do banco é 5 na posição vem 4(por isso o -1)
+                    qtdvotos[dadosdados[index].fk_receita - 1] = dadosdados[index].aaa
+                    // qtdvotos = dadosdados
+                    // aaa apelido do banco
+                }
+
+                console.log(qtdvotos)
+
+                gragra(qtdvotos)
+
+                // dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                // dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+</script>

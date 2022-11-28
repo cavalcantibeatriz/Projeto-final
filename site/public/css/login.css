@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    border: 0;
+    font-family: Cambria, serif;
+}
+body{
+    /* border: solid 3px purple; */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(88, 114, 63);
+    background-image: url(fts/fundo\ bia.gif);
+    background-size: 100%;
+    width: 100%;
+    height: 97vh;
+}
+
+.header {
+    /* position: fixed; */
+    background-color: black;
+    display: flex;
+    /* border: solid 3px purple; */
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+    grid-area: header;
+}
+.header #navbar {
+    /* border: solid 3px red; */
+    width: 96%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+#navbar li {
+    margin-right: 2%;
+    font-size: 17px;
+}
+li a {
+    /* text-decoration tira o sublinhado de link */
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: 0.3s;
+    margin: 0 30px;
+}
+li a:hover {
+    color: purple;
+    transition: 0.5s;
+}
+
+.log{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    margin: 25vh;
+    display: absolute;
+    position: absolute;
+    background: linear-gradient(315deg, rgb(195, 121, 61), rgb(96, 11, 145));
+    border: 3px solid black;
+    width: 280px;
+    height: 350px;
+    padding: 10px 40px 60px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.log h1{
+    
+color: white;
+font-size: 45px;
+font-weight: 10px;
+text-transform: uppercase;
+letter-spacing: 5px;
+margin-top: 20px;
+
+/* border: solid 3px rgb(120, 19, 19); */
+
+}
+
+.log #card{   
+display: absolute;
+margin: 0%;
+margin-top: 8%;
+margin-bottom: 0;
+margin-left: auto;
+margin-right: 50px;
+font-size: 18px;
+text-align: left;   
+color: rgb(0, 0, 0);
+/* border: solid 3px red; */
+width: 100%;
+font-weight: bold;
+}
+
+input{
+   
+    margin-bottom:20px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background-color: transparent;
+    border-radius: 10px;
+    border-bottom: solid 3px black;   
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.343);
+    text-align: center;
+}
+.log #card button{
+    color: beige;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    border:solid 1px rgb(255, 244, 244);
+    font-size: 25px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    box-shadow: #e74d0c;
+}
+.log #card a{
+    text-decoration: none;
+    color: rgb(75, 20, 84);
+    transition: 0.3s;
+    margin: 0 ;
+  
+}
+.log #card a:hover {
+    color: #188387;
+    transition: 0.5s;
+}
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }
